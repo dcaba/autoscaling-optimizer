@@ -3,6 +3,7 @@
 *.dll
 *.so
 *.dylib
+autoscaling-optimizer
 
 # Test binary, build with `go test -c`
 *.test
@@ -16,3 +17,4 @@
 # IDE specifics
 .idea/
 *.iml
+

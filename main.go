@@ -1,7 +1,7 @@
 package main
 
-import "fmt"
+import "os"
 
-func main()  {
-	fmt.Println("Hello")
+func main() {
+	os.Exit(Run(os.Args[1:]))
 }
