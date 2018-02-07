@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+cd $(dirname $0)/..
+source _script/go_version
+set -exuo pipefail
+
+function binary_compilation {
+    CGO_ENABLED=0 go build -o out/autoscaling-optimizer \
+    -ldflags "-X 'main.version=${commit_hash}' \
+    -extldflags '-static'" -a -installsuffix nocgo -tags netgo
+}
+
+# main()
+go_version_check
+echo "INFO: Building binaries/images"
+commit_hash=$(git rev-parse --short HEAD)
+binary_compilation

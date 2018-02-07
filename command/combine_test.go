@@ -1,11 +1,7 @@
 package command
 
-import (
-	"testing"
+import "testing"
 
-	"github.com/mitchellh/cli"
-)
-
-func TestCombineCommand_implement(t *testing.T) {
-	var _ cli.Command = &CombineCommand{}
+func TestCmdCombine(t *testing.T) {
+	// Write your code here
 }

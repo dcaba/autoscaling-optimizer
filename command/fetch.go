@@ -1,26 +1,9 @@
 package command
 
-import (
-	"strings"
-)
+import "github.com/urfave/cli"
 
-type FetchCommand struct {
-	Meta
-}
-
-func (c *FetchCommand) Run(args []string) int {
+func CmdFetch(c *cli.Context) {
+	// fetch metrics from aws so your simulations take them as the scenario to beat
 	// Write your code here
 
-	return 0
-}
-
-func (c *FetchCommand) Synopsis() string {
-	return ""
-}
-
-func (c *FetchCommand) Help() string {
-	helpText := `
-
-`
-	return strings.TrimSpace(helpText)
 }

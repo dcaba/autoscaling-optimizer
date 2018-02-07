@@ -1,26 +1,8 @@
 package command
 
-import (
-	"strings"
-)
+import "github.com/urfave/cli"
 
-type SimulateCommand struct {
-	Meta
-}
-
-func (c *SimulateCommand) Run(args []string) int {
+func CmdSimulate(c *cli.Context) {
 	// Write your code here
 
-	return 0
-}
-
-func (c *SimulateCommand) Synopsis() string {
-	return ""
-}
-
-func (c *SimulateCommand) Help() string {
-	helpText := `
-
-`
-	return strings.TrimSpace(helpText)
 }

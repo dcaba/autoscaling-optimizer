@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+cd $(dirname $0)/..
+
+# Usage info
+function show_help() {
+    cat <<-EOF
+    Usage: ${0##*/} [-hvdr]
+
+    Simulate a travis build against this repository
+
+        -h          display this help and exit
+
+EOF
+}
+
+function arguments_mgmt() {
+    OPTIND=1
+    while getopts ":hdr" opt; do
+        case "$opt" in
+            h )
+                show_help
+                exit 0
+                ;;
+            '?' )
+                show_help >&2
+                exit 1
+                ;;
+        esac
+    done
+    shift "$((OPTIND-1))"
+}
+
+function docker_run_cmdline_generator() {
+    script_name=$(echo $(basename $0) | cut -d "-" -f 1)
+    # https://docs.travis-ci.com/user/common-build-problems/#Troubleshooting-Locally-in-a-Docker-Image
+    test_docker_image="travisci/ci-garnet:packer-1503972846"
+    travis_user="travis"
+    travis_home="/home/${travis_user}"
+    docker_mounted_project="${travis_home}/gopath/src/github.com/dcaba/autoscaling-optimizer"
+    http_proxy="${http_proxy:-}"
+    cmdline="docker run -t -i \
+            -v $PWD:$docker_mounted_project \
+            -w $docker_mounted_project \
+            --user $travis_user
+            -e http_proxy=$http_proxy \
+            --privileged \
+            --rm \
+            $test_docker_image \
+            /bin/bash --login -c _script/$script_name "
+}
+
+# main()
+arguments_mgmt "$@"
+docker_run_cmdline_generator
+
+echo "DEBUG: executing $cmdline"
+eval $cmdline

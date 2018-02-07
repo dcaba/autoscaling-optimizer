@@ -1,35 +1,37 @@
 package main
 
 import (
+	"fmt"
+	"os"
+
 	"github.com/dcaba/autoscaling-optimizer/command"
-	"github.com/mitchellh/cli"
+	"github.com/urfave/cli"
 )
 
-func Commands(meta *command.Meta) map[string]cli.CommandFactory {
-	return map[string]cli.CommandFactory{
-		"fetch": func() (cli.Command, error) {
-			return &command.FetchCommand{
-				Meta: *meta,
-			}, nil
-		},
-		"simulate": func() (cli.Command, error) {
-			return &command.SimulateCommand{
-				Meta: *meta,
-			}, nil
-		},
-		"combine": func() (cli.Command, error) {
-			return &command.CombineCommand{
-				Meta: *meta,
-			}, nil
-		},
+var GlobalFlags = []cli.Flag{}
 
-		"version": func() (cli.Command, error) {
-			return &command.VersionCommand{
-				Meta:     *meta,
-				Version:  Version,
-				Revision: GitCommit,
-				Name:     Name,
-			}, nil
-		},
-	}
+var Commands = []cli.Command{
+	{
+		Name:   "fetch",
+		Usage:  "",
+		Action: command.CmdFetch,
+		Flags:  []cli.Flag{},
+	},
+	{
+		Name:   "simulate",
+		Usage:  "",
+		Action: command.CmdSimulate,
+		Flags:  []cli.Flag{},
+	},
+	{
+		Name:   "combine",
+		Usage:  "",
+		Action: command.CmdCombine,
+		Flags:  []cli.Flag{},
+	},
+}
+
+func CommandNotFound(c *cli.Context, command string) {
+	fmt.Fprintf(os.Stderr, "%s: '%s' is not a %s command. See '%s --help'.", c.App.Name, command, c.App.Name, c.App.Name)
+	os.Exit(2)
 }

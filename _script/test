@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+cd $(dirname $0)/..
+
+function main_tests() {
+    echo "[*] Running Tests"
+    go test -v -cover -race ./...
+}
+
+# main()
+main_tests

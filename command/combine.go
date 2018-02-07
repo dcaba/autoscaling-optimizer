@@ -1,26 +1,8 @@
 package command
 
-import (
-	"strings"
-)
+import "github.com/urfave/cli"
 
-type CombineCommand struct {
-	Meta
-}
-
-func (c *CombineCommand) Run(args []string) int {
+func CmdCombine(c *cli.Context) {
 	// Write your code here
 
-	return 0
-}
-
-func (c *CombineCommand) Synopsis() string {
-	return ""
-}
-
-func (c *CombineCommand) Help() string {
-	helpText := `
-
-`
-	return strings.TrimSpace(helpText)
 }
