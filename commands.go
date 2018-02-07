@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/dcaba/autoscaling-optimizer/command"
-	"github.com/urfave/cli"
+	"gopkg.in/urfave/cli.v1"
 )
 
 var GlobalFlags = []cli.Flag{}

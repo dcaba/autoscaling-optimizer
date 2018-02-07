@@ -1,5 +1,7 @@
 # autoscaling-optimizer - AWS Autoscaling groups optimizer
 
+[![Build Status](https://travis-ci.org/dcaba/autoscaling-optimizer.svg?branch=master)](https://travis-ci.org/dcaba/autoscaling-optimizer)
+
 ## Description
 
 Small toolkit/pieces of code facilitating the optimization of AWS Autoscaling groups 
