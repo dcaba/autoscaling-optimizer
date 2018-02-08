@@ -1,0 +1,12 @@
+{
+	"ImportPath": "github.com/dcaba/autoscaling-optimizer",
+	"GoVersion": "go1.9",
+	"GodepVersion": "v80",
+	"Deps": [
+		{
+			"ImportPath": "github.com/urfave/cli",
+			"Comment": "v1.20.0-53-g803d066",
+			"Rev": "803d0665796d3b09d3190067803fc285d1604732"
+		}
+	]
+}

@@ -1,9 +1,12 @@
 package command
 
-import "gopkg.in/urfave/cli.v1"
+import (
+	"github.com/urfave/cli"
+	"log"
+)
 
 func CmdFetch(c *cli.Context) {
-	// fetch metrics from aws so your simulations take them as the scenario to beat
-	// Write your code here
-
+	from := c.String("from")
+	to := c.String("to")
+	log.Println("Collecting data from", from, "to", to)
 }

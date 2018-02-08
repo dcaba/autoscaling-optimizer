@@ -1,6 +1,6 @@
 package command
 
-import "gopkg.in/urfave/cli.v1"
+import "github.com/urfave/cli"
 
 func CmdCombine(c *cli.Context) {
 	// Write your code here

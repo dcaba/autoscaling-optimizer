@@ -57,6 +57,7 @@ exit status 127
 Installing dependencies:
 ```bash
 % go get ./...
+% go get github.com/tools/godep
 ```
 
 Main tests execution:
