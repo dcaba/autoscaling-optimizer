@@ -35,14 +35,14 @@ var Commands = []cli.Command{
 		},
 	},
 	{
-		Name:   "simulate",
+		Name: "simulate",
 		UseShortOptionHandling: true,
 		Usage:  "",
 		Action: command.CmdSimulate,
 		Flags:  []cli.Flag{},
 	},
 	{
-		Name:   "combine",
+		Name: "combine",
 		UseShortOptionHandling: true,
 		Usage:  "",
 		Action: command.CmdCombine,
