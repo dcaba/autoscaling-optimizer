@@ -4,6 +4,8 @@ import (
 	"os"
 
 	"github.com/urfave/cli"
+	"io/ioutil"
+	"log"
 )
 
 func main() {
@@ -15,6 +17,18 @@ func main() {
 	app.Usage = ""
 
 	app.Flags = GlobalFlags
+	app.Before = func(c *cli.Context) error {
+		debug := c.Bool("debug")
+		if !debug {
+			log.SetOutput(ioutil.Discard)
+		}
+		log.Println("Program starting")
+		return nil
+	}
+	app.After = func(c *cli.Context) error {
+		defer log.Println("Program finished")
+		return nil
+	}
 	app.Commands = Commands
 	app.CommandNotFound = CommandNotFound
 
