@@ -7,12 +7,15 @@ import (
 	"github.com/urfave/cli"
 	"os"
 	"testing"
+	"path/filepath"
 )
 
 func TestCmdFetch(t *testing.T) {
 	fakeFlags := flag.NewFlagSet("dummy", flag.ErrorHandling(0))
-	fakeFlags.String("from", "2", "")
-	fakeFlags.String("to", "1", "")
+	fakeFlags.Int("from", 2, "")
+	fakeFlags.Int("to", 1, "")
+	testFile := "data_test/test_output_file.json"
+	fakeFlags.String("output", testFile, "")
 	fakeCmdFetchCtx := cli.NewContext(nil, fakeFlags, nil)
 
 	var b bytes.Buffer
@@ -28,5 +31,11 @@ func TestCmdFetch(t *testing.T) {
 	}
 	if lastCollectedOutput != successfulExecutionOutput {
 		t.Error("Command CmdFetch did not generate a succesful output:", lastCollectedOutput)
+	}
+
+	if _, err := os.Stat(testFile); os.IsNotExist(err) {
+		currentPath, _ := filepath.Abs(filepath.Dir(os.Args[0]))
+		t.Error("Command CmdFetch did not generate the expected output file", testFile, "in exec dir", currentPath,
+			". Actual error:", err)
 	}
 }

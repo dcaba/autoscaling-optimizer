@@ -22,15 +22,20 @@ var Commands = []cli.Command{
 		Usage:  "Fetch performance metrics from AWS Cloudfront you can use as the scenario for the simulations",
 		Action: command.CmdFetch,
 		Flags: []cli.Flag{
-			cli.StringFlag{
+			cli.IntFlag{
 				Name:  "from, f",
-				Value: "31",
+				Value: 31,
 				Usage: "Days from now from which you want to start collecting data",
 			},
-			cli.StringFlag{
+			cli.IntFlag{
 				Name:  "to, t",
-				Value: "1",
+				Value: 1,
 				Usage: "Days from now you want to finish collecting data",
+			},
+			cli.StringFlag{
+				Name:  "output, o",
+				Value: "data/awsMetrics.json",
+				Usage: "Path where you want to store collected data",
 			},
 		},
 	},
