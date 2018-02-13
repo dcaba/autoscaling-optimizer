@@ -6,8 +6,8 @@ import (
 	"flag"
 	"github.com/urfave/cli"
 	"os"
-	"testing"
 	"path/filepath"
+	"testing"
 )
 
 func TestCmdFetch(t *testing.T) {
