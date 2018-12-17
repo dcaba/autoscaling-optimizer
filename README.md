@@ -21,7 +21,11 @@ configurations
 
 ## What's the status?
 
-**WIP project**. Everything is pending. 
+**WIP project and almost discarded**. Everything is pending. And AWS released 
+[Predictive Scaling](https://aws.amazon.com/blogs/aws/new-predictive-scaling-for-ec2-powered-by-machine-learning/), 
+that overlaps a lot with the idea of this project (logic to configure "simple" autoscaling triggers to make
+autoscaling triggers effective according to previous demand is replaced by an autoscaling trigger logic that 
+already learns from previous data...)
 
 It will be built bearing in mind a very specific
 scenario, so assume your conditions or targets may not be reflected 
